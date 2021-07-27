@@ -30,6 +30,7 @@ export default function App() {
           <AddTodo
             onSubmit={addTodo}
           />
+
           <FlatList
             keyExtractor={item => item.id.toString()}
             data={todos}
@@ -37,6 +38,7 @@ export default function App() {
               onRemove={removeTodo}
             />}
           />
+
         </View>
       </ScrollView>
     </View >

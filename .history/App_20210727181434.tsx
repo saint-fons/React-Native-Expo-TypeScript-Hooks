@@ -8,6 +8,11 @@ export default function App() {
   const [todos, setTodos] = useState<any>([])
 
   const addTodo = title => {
+    /* const newTodo = {
+      id: Date.now().toString,
+      title: title,
+    } */
+
     setTodos(prev => [
       ...prev, {
         id: Date.now().toString(),
@@ -15,31 +20,23 @@ export default function App() {
       }])
   }
 
-  /* Функция удаления туду */
-  const removeTodo = id => {
-    setTodos(prev => prev.filter(todo => todo.id !== id))
-  }
-
   return (
-    <View>
-      <ScrollView>
-        <NavBar
-          title={"ToDo app"}
+    <ScrollView>
+      <NavBar
+        title={"ToDo app"}
+      />
+      <View style={styles.container}>
+        <AddTodo
+          onSubmit={addTodo}
         />
-        <View style={styles.container}>
-          <AddTodo
-            onSubmit={addTodo}
-          />
-          <FlatList
-            keyExtractor={item => item.id.toString()}
-            data={todos}
-            renderItem={({ item }) => <Todo todo={item}
-              onRemove={removeTodo}
-            />}
-          />
-        </View>
-      </ScrollView>
-    </View >
+
+        <FlatList
+        keyExtractor={item => item.id}
+          data={todos}
+          renderItem={({ item }) => <Todo todo= { item } />}
+        />
+      </View>
+    </ScrollView >
   );
 }
 

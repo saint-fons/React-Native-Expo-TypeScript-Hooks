@@ -21,25 +21,23 @@ export default function App() {
   }
 
   return (
-    <View>
-      <ScrollView>
-        <NavBar
-          title={"ToDo app"}
+    <ScrollView>
+      <NavBar
+        title={"ToDo app"}
+      />
+      <View style={styles.container}>
+        <AddTodo
+          onSubmit={addTodo}
         />
-        <View style={styles.container}>
-          <AddTodo
-            onSubmit={addTodo}
-          />
-          <FlatList
-            keyExtractor={item => item.id.toString()}
-            data={todos}
-            renderItem={({ item }) => <Todo todo={item}
-              onRemove={removeTodo}
-            />}
-          />
-        </View>
-      </ScrollView>
-    </View >
+        <FlatList
+          keyExtractor={item => item.id.toString()}
+          data={todos}
+          renderItem={({ item }) => <Todo todo={item}
+            onRemove={removeTodo}
+          />}
+        />
+      </View>
+    </ScrollView >
   );
 }
 

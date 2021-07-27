@@ -22,14 +22,14 @@ export default function App() {
 
   return (
     <View>
-      <ScrollView>
-        <NavBar
-          title={"ToDo app"}
+      <NavBar
+        title={"ToDo app"}
+      />
+      <View style={styles.container}>
+        <AddTodo
+          onSubmit={addTodo}
         />
-        <View style={styles.container}>
-          <AddTodo
-            onSubmit={addTodo}
-          />
+        <ScrollView>
           <FlatList
             keyExtractor={item => item.id.toString()}
             data={todos}
@@ -37,8 +37,8 @@ export default function App() {
               onRemove={removeTodo}
             />}
           />
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     </View >
   );
 }
